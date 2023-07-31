@@ -21,16 +21,19 @@ function App() {
 
   return (
     <>
-      <form onSubmit={(e) => { e.preventDefault(); shortenUrl(); }}>
-        <label htmlFor="long-url">Insert your URL</label>
+      <h1 className='heading'>Link shortening website</h1>
+      <form className='long-url' onSubmit={(e) => { e.preventDefault(); shortenUrl(); }}>
+        <label className="long-url--label" htmlFor="long-url">Insert your URL</label>
         <input
           type="text"
+          className='long-url--input'
           name="long-url"
           id="long-url"
+          placeholder='Insert your URL'
           onChange={(e) => setInput(e.target.value)}
           value={input}
         />
-        <button type="submit">Shorten</button>
+        <button className='btn long-url--btn' type="submit">Shorten</button>
       </form>
 
       {shortUrl && (
@@ -43,7 +46,7 @@ function App() {
             readOnly
           /></div>
       )}
-      <button type='button' className="copy-short-link" data-clipboard-target="#shortened-link" onClick={() => setCopy(true)}>
+      <button type='button' className="btn copy-short-link" data-clipboard-target="#shortened-link" onClick={() => setCopy(true)}>
         {copy ? "Copied" : "Copy"}
       </button>
     </>
